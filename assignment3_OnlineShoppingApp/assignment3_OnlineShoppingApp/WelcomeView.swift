@@ -1,13 +1,13 @@
 //
-//  ContentView.swift
+//  WelcomeView.swift
 //  assignment3_OnlineShoppingApp
 //
-//  Created by Tuan Kiet Phan on 30/4/2024.
+//  Created by Tuan Kiet Phan on 7/5/2024.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct WelcomeView: View {
     @EnvironmentObject var authModel: AuthenticationModel
     
     var body: some View {
@@ -39,7 +39,7 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                Text("Have great shopping time with us!")
+                Text("Have great shopping times with us!")
                 
                 
             }
@@ -52,6 +52,6 @@ struct ContentView: View {
 
 #Preview {
     NavigationView {
-        ContentView()
+        WelcomeView()
     }
 }

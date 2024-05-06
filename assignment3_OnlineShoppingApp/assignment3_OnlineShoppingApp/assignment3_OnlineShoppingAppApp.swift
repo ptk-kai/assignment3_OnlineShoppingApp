@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct assignment3_OnlineShoppingAppApp: App {
+    @StateObject var authModel = AuthenticationModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(authModel)
         }
     }
 }
