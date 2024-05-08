@@ -10,6 +10,7 @@ import SwiftUI
 struct LogInView: View {
     @State private var email = ""
     @State private var password = ""
+    @State private var isUserAuthenticated: Bool = false
     @EnvironmentObject var authModel: AuthenticationModel
     
     var body: some View {
@@ -32,6 +33,8 @@ struct LogInView: View {
                         try await authModel.signIn(email: email, password: password)
                     }
                 }
+                .disabled(!isFormValid)
+                .opacity(isFormValid ? 1.0 : 0.5)
                 
                 
                 NavigationLink(
@@ -51,6 +54,13 @@ struct LogInView: View {
     }
 }
 
+extension LogInView: AuthenticationForm {
+    var isFormValid: Bool {
+        return !email.isEmpty && email.contains("@") && !password.isEmpty && password.count > 5
+    }
+}
+
 #Preview {
     LogInView()
+        .environmentObject(AuthenticationModel())
 }

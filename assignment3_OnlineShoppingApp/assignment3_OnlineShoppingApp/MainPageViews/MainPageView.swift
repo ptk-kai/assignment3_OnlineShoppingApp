@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainPageView: View {
+    @EnvironmentObject var authModel: AuthenticationModel
+    
     var body: some View {
         Text("This is main page displaying products")
     }
@@ -15,4 +17,5 @@ struct MainPageView: View {
 
 #Preview {
     MainPageView()
+        .environmentObject(AuthenticationModel())
 }

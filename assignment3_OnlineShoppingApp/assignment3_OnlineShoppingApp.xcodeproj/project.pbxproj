@@ -25,6 +25,8 @@
 		3E857AFB2BE980390027FD86 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3E857AFA2BE980390027FD86 /* FirebaseFirestoreSwift */; };
 		3E857AFD2BE980390027FD86 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3E857AFC2BE980390027FD86 /* FirebaseStorage */; };
 		3E857AFF2BE9811B0027FD86 /* AuthenticationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E857AFE2BE9811B0027FD86 /* AuthenticationModel.swift */; };
+		3E857B032BEBFFBE0027FD86 /* WelcomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E857B022BEBFFBE0027FD86 /* WelcomePageView.swift */; };
+		3E857B052BEC181B0027FD86 /* SuccessfulSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E857B042BEC181A0027FD86 /* SuccessfulSignUpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		3E857AF12BE979450027FD86 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3E857AF32BE97EE60027FD86 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		3E857AFE2BE9811B0027FD86 /* AuthenticationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationModel.swift; sourceTree = "<group>"; };
+		3E857B022BEBFFBE0027FD86 /* WelcomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageView.swift; sourceTree = "<group>"; };
+		3E857B042BEC181A0027FD86 /* SuccessfulSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessfulSignUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,7 @@
 			children = (
 				3E857AD02BE020110027FD86 /* assignment3_OnlineShoppingAppApp.swift */,
 				3E857AD22BE020110027FD86 /* ContentView.swift */,
+				3E857B022BEBFFBE0027FD86 /* WelcomePageView.swift */,
 				3E857AE42BE9644C0027FD86 /* Authentication */,
 				3E857AEE2BE975250027FD86 /* MainPageViews */,
 				3E857AEB2BE9741C0027FD86 /* ProfileViews */,
@@ -108,6 +113,7 @@
 				3E857AFE2BE9811B0027FD86 /* AuthenticationModel.swift */,
 				3E857AE22BE954250027FD86 /* SignUpView.swift */,
 				3E857AE02BE954120027FD86 /* LogInView.swift */,
+				3E857B042BEC181A0027FD86 /* SuccessfulSignUpView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -228,6 +234,7 @@
 			files = (
 				3E857AE72BE965270027FD86 /* TextInputView.swift in Sources */,
 				3E857AFF2BE9811B0027FD86 /* AuthenticationModel.swift in Sources */,
+				3E857B052BEC181B0027FD86 /* SuccessfulSignUpView.swift in Sources */,
 				3E857AE32BE954250027FD86 /* SignUpView.swift in Sources */,
 				3E857AF02BE9754C0027FD86 /* MainPageView.swift in Sources */,
 				3E857AF22BE979450027FD86 /* User.swift in Sources */,
@@ -236,6 +243,7 @@
 				3E857AE92BE967B60027FD86 /* RoundCornerButtonView.swift in Sources */,
 				3E857AED2BE9745A0027FD86 /* ProfileView.swift in Sources */,
 				3E857AD12BE020110027FD86 /* assignment3_OnlineShoppingAppApp.swift in Sources */,
+				3E857B032BEBFFBE0027FD86 /* WelcomePageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,47 +11,17 @@ struct ContentView: View {
     @EnvironmentObject var authModel: AuthenticationModel
     
     var body: some View {
-        ZStack {
-            Color.mint.edgesIgnoringSafeArea(.all)
-            VStack {
-                Text("Welcome to our store!")
-                    .font(.largeTitle)
-                Spacer()
-                
-                Text("Logo")
-                    .font(.largeTitle)
-                
-                Spacer()
-                
-                HStack {
-                    NavigationLink(
-                        destination: LogInView(),
-                        label: {
-                            RoundCornerButtonView(title: "Log In")
-                        })
-                    
-                    NavigationLink(
-                        destination: SignUpView(),
-                        label: {
-                            RoundCornerButtonView(title: "Sign Up")
-                        })
-                }
-                
-                Spacer()
-                
-                Text("Have great shopping time with us!")
-                
-                
+        Group {
+            if authModel.userSession != nil {
+                ProfileView()
+            } else {
+                LogInView()
             }
-            .padding()
-            .navigationBarBackButtonHidden(true)
-            .navigationBarHidden(true)
         }
     }
 }
 
 #Preview {
-    NavigationView {
-        ContentView()
-    }
+    ContentView()
+        .environmentObject(AuthenticationModel())
 }

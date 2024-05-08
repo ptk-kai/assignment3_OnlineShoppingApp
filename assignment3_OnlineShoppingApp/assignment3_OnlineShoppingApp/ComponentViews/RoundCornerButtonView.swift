@@ -27,5 +27,7 @@ struct RoundCornerButtonView: View {
 }
 
 #Preview {
-    RoundCornerButtonView(title: "Button")
+    RoundCornerButtonView(title: "Button") {
+        print("Hello")
+    }
 }

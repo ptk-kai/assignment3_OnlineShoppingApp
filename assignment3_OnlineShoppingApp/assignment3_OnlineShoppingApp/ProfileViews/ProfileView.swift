@@ -8,45 +8,57 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @EnvironmentObject var authModel: AuthenticationModel
+    
     var body: some View {
-        List {
-            Section {
-                HStack {
-                    Text("Ava")
-                        .font(.title)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .frame(width: 80, height: 80)
-                        .background(Color(.systemGray3))
-                        .clipShape(Circle())
-                    
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(User.MOCK_USER.name)
-                            .fontWeight(.semibold)
-                            .padding(.top, 5)
-                        Text(User.MOCK_USER.email)
-                            .font(.footnote)
-                            .accentColor(.gray)
+        NavigationStack {
+            if let user = authModel.currentUser {
+                List {
+                    Section {
+                        HStack {
+                            Text("Ava")
+                                .font(.title)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.white)
+                                .frame(width: 80, height: 80)
+                                .background(Color(.systemGray3))
+                                .clipShape(Circle())
+                            
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(user.name)
+                                    .fontWeight(.semibold)
+                                    .padding(.top, 5)
+                                Text(user.email)
+                                    .font(.footnote)
+                                    .accentColor(.gray)
+                            }
+                        }
+                        
                     }
-                }
-                
-            }
-            
-            Section("General") {
-                
-            }
-            
-            Section("Account") {
-                Button {
-                    print("Sign out...")
-                } label: {
-                    Text("Sign Out")
+                    
+                    Section("General") {
+                        
+                    }
+                    
+                    Section("Account") {
+                        Button {
+                            authModel.signOut()
+                        } label: {
+                            RoundCornerButtonView(title: "SIGN OUT")
+                        }
+                    }
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
 }
 
 #Preview {
-    ProfileView()
+    NavigationView {
+        ProfileView()
+            .environmentObject(AuthenticationModel())
+    }
+    
 }

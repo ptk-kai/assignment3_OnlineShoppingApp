@@ -40,17 +40,20 @@ struct SignUpView: View {
                         try await authModel.signUp(email: email, password: password, name: name)
                     }
                 }
+                .disabled(!isFormValid)
+                .opacity(isFormValid ? 1.0 : 0.5)
                 
-                Button {
-                    dismiss()
-                } label: {
-                    HStack {
-                        Text("Already have an account?")
-                        Text("Sign in")
-                            .fontWeight(.bold)
+                NavigationLink(
+                    destination: LogInView(),
+                    label: {
+                        HStack {
+                            Text("Already have an account?")
+                            Text("Sign in")
+                                .fontWeight(.bold)
+                        }
+                        .font(.system(size: 15))
                     }
-                    .font(.system(size: 15))
-                }
+                )
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -58,6 +61,18 @@ struct SignUpView: View {
     }
 }
 
+extension SignUpView: AuthenticationForm {
+    var isFormValid: Bool {
+        return !email.isEmpty 
+        && email.contains("@")
+        && !password.isEmpty
+        && password.count > 5
+        && password2 == password
+        && !name.isEmpty
+    }
+}
+
 #Preview {
     SignUpView()
+        .environmentObject(AuthenticationModel())
 }
