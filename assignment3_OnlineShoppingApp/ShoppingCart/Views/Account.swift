@@ -2,7 +2,7 @@
 //  Account.swift
 //  ShoppingCart
 //
-//  Created by Mark Gutierrez on 12/5/2024.
+//  Created by Tuan Kiet Phan on 12/5/2024.
 //
 
 import SwiftUI
