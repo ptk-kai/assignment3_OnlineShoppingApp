@@ -2,7 +2,7 @@
 //  ShoppingCartApp.swift
 //  ShoppingCart
 //
-//  Created by CN TEST on 11/5/2024.
+//  Created by Mark Gutierrez on 11/5/2024.
 //
 
 import SwiftUI

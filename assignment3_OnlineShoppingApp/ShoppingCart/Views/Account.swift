@@ -2,12 +2,13 @@
 //  Account.swift
 //  ShoppingCart
 //
-//  Created by CN TEST on 12/5/2024.
+//  Created by Mark Gutierrez on 12/5/2024.
 //
 
 import SwiftUI
 
 struct Account: View {
+    // Get all presistant Jsons
     @AppStorage("Users") var allUsers: String?
     @AppStorage("CurrentUser") var currentUser: String?
     @AppStorage("Invoices") var Invoices: String?
@@ -57,9 +58,11 @@ struct Account: View {
                 }
 
                 List {
+                    // List all transactions
                     Section(header: Text("Transactions")) {
                         ForEach(invoiceHistory.indices, id: \.self) { index in
                             let invoice = invoiceHistory[index]
+                            // on click of the Invoice will retiract to a detailed transaction an items of the invoice
                             NavigationLink(
                                 destination: DetailedTransaction(transaction: invoice.transaction, datetime: invoice.datetime, total: invoice.total), //  redirect to the start menu
                                 label: {
@@ -72,6 +75,7 @@ struct Account: View {
                 Spacer()
                 
                 Button {
+                    // removes the current user from memory and persistant storage
                     currentUser = ""
                     isLoggedOut = true
                 } label: {
@@ -90,10 +94,13 @@ struct Account: View {
                 
             }
             .onAppear {
+                // gets user data 
                 user = StorageController.getUserByEmail(UsersTable: allUsers!, email: currentUser!)
+                // gets invoice data
                 invoiceHistory = StorageController.getInvoiceByEmail(InvoiceTable: Invoices!, email: currentUser!)
             }
             .navigationDestination(isPresented: $isLoggedOut) {
+                // if log out is click in redirects to the authentication page
                 Authentication()
             }
             

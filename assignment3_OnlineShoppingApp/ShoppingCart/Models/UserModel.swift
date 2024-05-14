@@ -2,11 +2,12 @@
 //  UserModel.swift
 //  ShoppingCart
 //
-//  Created by CN TEST on 11/5/2024.
+//  Created by Mark Gutierrez on 11/5/2024.
 //
 
 import Foundation
 
+// view model for login and registration
 class UserViewModel: ObservableObject {
     
     @Published var username = ""
@@ -21,6 +22,8 @@ class UserViewModel: ObservableObject {
     
 }
 
+
+// user model for json tables for serialization and deserialization
 struct UserModel: Identifiable, Codable {
     var id: String = UUID().uuidString
     var username: String

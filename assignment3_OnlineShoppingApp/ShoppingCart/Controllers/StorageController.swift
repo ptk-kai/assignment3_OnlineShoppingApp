@@ -9,6 +9,7 @@ import Foundation
 
 class StorageController {
     
+    // Saves user into the user json
     static func SaveUser(UsersTable: String, newUser: UserModel) -> String {
         
         do {
@@ -31,6 +32,7 @@ class StorageController {
         return UsersTable
     }
     
+    // checks if user exists
     static func isUserExist(UsersTable: String, email: String) -> Bool {
 
         do {
@@ -52,6 +54,7 @@ class StorageController {
         return false
     }
     
+    // gets object from the provided email
     static func getUserByEmail(UsersTable: String, email: String) -> UserModel? {
 
         do {
@@ -72,6 +75,7 @@ class StorageController {
         return nil
     }
     
+    // updates the cart json for the specific email provided
     static func updateCartTable(CartTable: String, UserCart: [CartModel], email: String) -> String {
         do {
             // Convert JSON string to data
@@ -93,6 +97,7 @@ class StorageController {
         return CartTable
     }
     
+    // retrieves the cart object for the specific email provided
     static func getCartByEmail(CartTable: String, email: String) -> [CartModel] {
         do {
             // Convert JSON string to data
@@ -111,6 +116,7 @@ class StorageController {
         return []
     }
     
+    // inserts invoice to the invoice json for the specific email provided
     static func InsertInvoice(InvoicesTable: String, transactions: InvoiceModel, email: String) -> String {
         
         do {
@@ -136,6 +142,7 @@ class StorageController {
         return InvoicesTable
     }
     
+    // retrives list of invoices for the email provided
     static func getInvoiceByEmail(InvoiceTable: String, email: String) -> [InvoiceModel] {
         do {
             // Convert JSON string to data

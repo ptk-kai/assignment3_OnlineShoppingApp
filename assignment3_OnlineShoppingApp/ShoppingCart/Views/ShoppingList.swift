@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct ShoppingList: View {
+
+    // Instatiate the presistant storage
     @AppStorage("CurrentUser") var currentUser: String?
     @AppStorage("Carts") var Carts: String?
     @AppStorage("Invoices") var Invoices: String?
     
+    // have a empty cart
     @State var cartList: [CartModel] = []
     
+    // possible background colors for the items to be purchased
     let colors: [Color] = [
         .red,
         .green,
@@ -23,17 +27,20 @@ struct ShoppingList: View {
         .purple
     ]
     
+    // list view
     var columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
     
+    // dummy data or inventory to purchase from
     var items: [ItemModel] = shopItems
     
     var body: some View {
         NavigationStack {
             VStack(spacing: 5) {
                 HStack {
+                    // Navigation to the cart view
                     NavigationLink(
                         destination: Cart(cartList: $cartList),
                         label: {
@@ -49,6 +56,7 @@ struct ShoppingList: View {
                     
                     Spacer()
                     
+                    // Navigation to the Account where you can log out and see your transactions
                     NavigationLink(
                         destination: Account(),
                         label: {
@@ -68,6 +76,7 @@ struct ShoppingList: View {
                 }.padding(20)
                 
                 ScrollView() {
+                    // Shows all stock available
                     LazyVGrid(columns: columns, spacing: 30) {
                         ForEach(shopItems.indices, id: \.self) { index in
                             let randomColor = colors.randomElement() ?? .clear
@@ -80,6 +89,7 @@ struct ShoppingList: View {
                 
             }
             .onAppear {
+                // Creates persistant storage if it does not exist
                 if Carts == nil {
                     Carts = "{}"
                 } else {

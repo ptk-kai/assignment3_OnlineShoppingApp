@@ -2,19 +2,25 @@
 //  Authentication.swift
 //  ShoppingCart
 //
-//  Created by CN TEST on 11/5/2024.
+//  Created by Mark Gutierrez on 11/5/2024.
 //
 
 import SwiftUI
 
 struct Authentication: View {
+    // Instatiate variables
     @StateObject private var viewModel = UserViewModel()
     @State var isLoginPage = true
     @State var alert = ""
+
+    // Persistant Storage
     @AppStorage("Users") var allUsers: String?
     @AppStorage("CurrentUser") var currentUser: String?
+    
+    // Used to redirect to the Shopping page when this is true
     @State private var isAuthenticated = false
     
+    // Unauthenticated pages in one Login/Registration
     var body: some View {
         NavigationStack {
             VStack {
@@ -87,6 +93,7 @@ struct Authentication: View {
             }
             .padding()
             .onAppear {
+                // Instantiate a Json string for persistant storage
                 if allUsers == nil {
                     allUsers = "{}"
                 }
@@ -99,14 +106,18 @@ struct Authentication: View {
     }
     
     func handleAuthButton() {
+        // Form submit handling
         if isLoginPage {
+            // if it the login page
             guard let allUsersTable = allUsers else { return }
             
+            // use auth controller to check if it is valid login credentials
             if AuthController.validateLogin(UsersTable: allUsersTable, email: viewModel.email.lowercased(), password: viewModel.password) {
                 alert = "Successful Login"
                 currentUser = viewModel.email.lowercased()
                 isAuthenticated = true
             } else {
+                // show alert
                 alert = "Invalid Login Credentials"
             }
         } else {
@@ -116,6 +127,7 @@ struct Authentication: View {
                 password: viewModel.password
             )
             
+            // check if the user inputs are valid
             guard AuthController.validateRegistration(userModel: newUser) else {
                 alert = "Invalid User Input"
                 return
@@ -123,14 +135,16 @@ struct Authentication: View {
             
             guard let allUsersTable = allUsers else { return }
             
+            // check if user already exists
             guard !StorageController.isUserExist(UsersTable: allUsersTable, email: newUser.email.lowercased()) else {
                 alert = "User Already Exists"
                 return
             }
             
+            // saves the user into the persistant storage
             allUsers = StorageController.SaveUser(UsersTable: allUsersTable, newUser: newUser)
-            viewModel.clear()
-            isLoginPage.toggle()
+            viewModel.clear() //  erase the form
+            isLoginPage.toggle() // change it to the login page
         }
     }
 }

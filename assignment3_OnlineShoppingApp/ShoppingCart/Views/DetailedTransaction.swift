@@ -2,7 +2,7 @@
 //  DetailedTransaction.swift
 //  ShoppingCart
 //
-//  Created by CN TEST on 12/5/2024.
+//  Created by Mark Gutierrez on 12/5/2024.
 //
 
 import SwiftUI
@@ -14,6 +14,7 @@ struct DetailedTransaction: View {
     
     var body: some View {
         VStack {
+            // Lists out all items in an invoice
             Text("Transaction: \(datetime.formatted(.dateTime)) - $\(String(format: "%.2f", total))")
             List {
                 ForEach(transaction.indices, id: \.self) { index in

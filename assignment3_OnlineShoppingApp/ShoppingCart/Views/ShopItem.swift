@@ -2,7 +2,7 @@
 //  ShopItem.swift
 //  ShoppingCart
 //
-//  Created by CN TEST on 11/5/2024.
+//  Created by Mark Gutierrez on 11/5/2024.
 //
 
 import SwiftUI
@@ -12,6 +12,8 @@ struct ShopItem: View {
     var title: String
     var price: Double
     var color: Color
+
+    // keeps the state of the parent compenent so the the cart maintains same memeory
     @Binding var cartList: [CartModel]
     @State var hasClicked = false
     
