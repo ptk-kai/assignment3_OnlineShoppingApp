@@ -15,7 +15,7 @@ https://github.com/ptk-kai/assignment3_OnlineShoppingApp
 
 2. Log in / Log out
 
-3. Main page: (Mark Doing) 
+3. Main page:
 
 * Tab view with multiple sub-pages (search, cart, account, setting...) 
 
@@ -37,4 +37,12 @@ https://github.com/ptk-kai/assignment3_OnlineShoppingApp
 
 * Total price 
 
-* Check out option 
+* Check out option
+
+6. Profile:
+
+* Display user's information
+
+* Log out button
+
+* Transactions history
